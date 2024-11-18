@@ -1,18 +1,14 @@
-name: Auto-assign reviewers
+name: Review Assign
 
 on:
-  pull_request_target:
-    types: [opened]
+  pull_request:
+    types: [opened, ready_for_review]
 
 jobs:
   assign:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Assign reviewers
-        uses: kentaro-m/auto-assign-action@v2.0.0
+      - uses: hkusu/review-assign-action@v1
         with:
-          configuration-path: '.github/auto_assign.yml'
+          assignees: ${{ github.actor }}
+          reviewers: ${{ vars.REVIEWERS }}
