@@ -9,11 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Assign reviewers
-        uses: kentaro-m/auto-assign-action@v1
+        uses: kentaro-m/auto-assign-action@v2
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           reviewers: |
             LuchoBazz
             lmbaeza
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          add-reviewers: true
+          add-assignees: false
