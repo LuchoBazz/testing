@@ -1,0 +1,19 @@
+name: Auto-assign reviewers
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Assign reviewers
+        uses: kentaro-m/auto-assign-action@v1
+        with:
+          reviewers: |
+            LuchoBazz
+            lmbaeza
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
