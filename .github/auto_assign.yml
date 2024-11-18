@@ -2,5 +2,3 @@ addReviewers: true
 addAssignees: false
 reviewers:
   - lmbaeza
-
-numberOfReviewers: 0
